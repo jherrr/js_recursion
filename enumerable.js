@@ -39,7 +39,7 @@ function myInject(arr, func) {
   return accum;
 }
 
-var integers = [1,2,3,4];
-console.log(myInject(integers, function addOne(el) {
-  return el;
-} ));
+// var integers = [1,2,3,4];
+// console.log(myInject(integers, function addOne(el) {
+//   return el;
+// } ));
