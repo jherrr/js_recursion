@@ -32,7 +32,7 @@ function transpose(arr) {
     transposedArr.push([]);
   }
 
-  for(var x = 0; x < arr.length; x++) {
+  for(x = 0; x < arr.length; x++) {
     for(var y = 0; y < arr[x].length; y++) {
       transposedArr[y].push(arr[x][y]);
     }

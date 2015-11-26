@@ -1,45 +1,46 @@
-function myEach(arr, func) {
-  for (var i = 0; i < arr.length; i++) {
-    func(arr[i]);
+Array.prototype.myEach = function(func) {
+  for (var i = 0; i < this.length; i++) {
+    func(this[i]);
   }
-  return arr;
+  return this;
 }
 
-// var arr = [1, 2, 3];
-// myEach(arr, function addOne(ele) {
-//     console.log(ele);
-//   });
 
-function myMap(arr, func) {
+var arr = [1, 2, 3];
+arr.myEach(function addOne(ele) {
+    console.log(ele);
+  });
+
+Array.prototype.myMap = function(func) {
   var output = [];
 
   function mappedItemFunc(el) {
       output.push(func(el))
   }
 
-  myEach(arr, mappedItemFunc)
+  this.myEach(mappedItemFunc)
 
   return output;
 }
 
-// var integers = [1,2,3,4];
-// console.log(myMap(integers, function addOne(el) {
-//   return el+1;
-// } ));
+var integers = [1,2,3,4];
+console.log(integers.myMap(function addOne(el) {
+  return el+1;
+} ));
 
-function myInject(arr, func) {
-  var accum = 0;
+Array.prototype.myInject = function(func) {
+  var accum = this[0];
 
   function accumFunc(el) {
-    accum += func(el)
+    accum = func(el, accum)
   }
 
-  myEach(arr, accumFunc)
+  this.slice(1).myEach(accumFunc)
 
   return accum;
 }
 
-// var integers = [1,2,3,4];
-// console.log(myInject(integers, function addOne(el) {
-//   return el;
-// } ));
+var integers = [1,2,3,4];
+console.log(integers.myInject(function addOne(el, accum) {
+  return el + accum;
+} ));
